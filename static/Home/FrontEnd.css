@@ -59,6 +59,14 @@
 	position: relative;
 	margin-left: 40px;
 }
+.search input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
 .app-text p{
 	width: 650px;
 	font-size: 15px;
