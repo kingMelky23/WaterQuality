@@ -7,33 +7,38 @@
 
 <body>
 	<div class="container"> <!-- USED IN THE CSS FILE TO CHNAGE THE BACKGROUND -->
-	<div class = "menu">
-		<ul>
-			<li class = "logo"><img src="{% static 'Home/tapwater.png' %}"></li>
-			<li class = "homeDesign">Home</li> <!-- USED TO MAKE A LIST -->
-			<li>Mission</li>
-			<li>Resources</li>
-			<li>About Us</li>
-			<li><a href ="#" class = "signup-btn"><span>Sign Up</span></a></li>
-		</ul>	
-	</div>
-	<div class="topText">
-		<div class="app-text">
+		<div class = "menu">
+			<ul>
+				<li class = "logo"><img src="{% static 'Home/tapwater.png' %}"></li>
+				<li class = "homeDesign">Home</li> <!-- USED TO MAKE A LIST -->
+				<li>Mission</li>
+				<li>Resources</li>
+				<li>About Us</li>
+			</ul>
+		</div>
+		<div class="topText">
 			<h1>Drink Safe</h1>
-			<P>list of zipcodes searched:<br>
-			{% if zipcode_list %}
-			    <ul>
-			    {% for zipcode in zipcode_list %}
-			        <li><a href="/polls/{{ question.id }}/">{{ zipcode.areaCode }}</a></li>
-			    {% endfor %}
-			    </ul>
-			{% else %}
-			    <p>No zipcodes are available.</p>
-			{% endif %}
-			
+			<div class="app-text">
+				<form action='/Home/' method='post'>{% csrf_token %}
+
+					<input class="search" type="text" name="areaCode" placeholder="Enter Zipcode.. e.g.(50505)">
+					<input type="submit">
+
+				</form>
+				<P>list of zipcodes searched:<br>
+				{% if zipcode_list %}
+					<ul>
+					{% for zipcode in zipcode_list %}
+						<li><a href="/polls/{{ question.id }}/">{{ zipcode.areaCode }}</a></li>
+					{% endfor %}
+					</ul>
+				{% else %}
+					<p>No zipcodes are available.</p>
+				{% endif %}
+
 		</div>
-		<div class= "app-picture"><img src="{% static 'Home/waterr.png' %}">
-		</div>
+			<div class= "app-picture"><img src="{% static 'Home/waterr.png' %}">
+			</div>
 	</div>
 	</div>
 
